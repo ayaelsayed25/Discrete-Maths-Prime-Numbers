@@ -15,5 +15,3 @@ def sieve_of_eratosthenes(upper_limit):
             primes.append(p)
     return primes
 
-
-print(sieve_of_eratosthenes(100))

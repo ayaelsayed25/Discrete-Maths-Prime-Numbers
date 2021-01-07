@@ -15,7 +15,7 @@ def miller_test(n, iterations):
     # choose a where a is a random number and 1<a<n-1
     for _ in range(iterations):
         prime = False
-        a = random.randrange(2, n - 1)
+        a = random.randrange(2, n)
         # according to fermat n is prime if a^(n-1) - 1 mod n = 0
         # we express a^(n-1) - 1 as (a^m-1)(a^m+1)(a^2m)...(a^2)  (difference of squares factorization)
         # if n is divisible by any of the terms in the expansion it's probably prime
@@ -25,13 +25,10 @@ def miller_test(n, iterations):
             prime = True
         for _ in range(k):
             # testing divisibility of the remaining terms (a^2m)...(a^2)
-            b = b ** 2
+            b = pow(b, 2, n)
             if b == n - 1:
                 prime = True
         if not prime:
             return False
     return True
 
-
-print(miller_test(9, 4))
-print(miller_test(15, 5))
